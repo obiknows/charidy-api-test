@@ -54,7 +54,7 @@ func TestRateLimiterLessThan10(t *testing.T) {
 		t.Fatal(err)
 	}
 	var wg sync.WaitGroup
-	for i := 0; i < 9; i++ {
+	for i := 0; i < 8; i++ {
 		wg.Add(1)
 		go func(wg *sync.WaitGroup) {
 			defer wg.Done()
@@ -75,7 +75,7 @@ func TestRateLimiterExactly10(t *testing.T) {
 	req, _ := http.NewRequest("GET", testServer.URL, nil)
 
 	var wg sync.WaitGroup
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 9; i++ {
 		wg.Add(1)
 		go func(wg *sync.WaitGroup) {
 			defer wg.Done()
